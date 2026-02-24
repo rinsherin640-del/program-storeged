@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programs Storage - Game Helper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #333;
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        input {
+            padding: 15px;
+            font-size: 18px;
+            width: 200px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .program-box {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            display: none;
+        }
+        .note {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .win-message {
+            text-align: center;
+            color: #28a745;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Game Programs Storage 🎮</h1>
+        
+        <div class="input-section">
+            <input type="text" id="codeInput" placeholder="Type code1, code2, etc.">
+            <button onclick="showProgram()">Show Program</button>
+        </div>
+
+        <div id="programBox" class="program-box"></div>
+        <div id="winMessage" class="win-message">🏆 YOU WIN! 🏆</div>
+        
+        <div class="note">
+            Type code1 to code10 to see programs<br>
+            Type 1 when you win the game!
+        </div>
+    </div>
+
+    <script>
+        function showProgram() {
+            let input = document.getElementById('codeInput').value.toLowerCase().trim();
+            let programBox = document.getElementById('programBox');
+            let winMessage = document.getElementById('winMessage');
+            
+            // WIN CONDITION - Type '1' to win!
+            if(input === '1') {
+                programBox.style.display = 'none';
+                winMessage.style.display = 'block';
+                return;
+            }
+            
+            winMessage.style.display = 'none';
+            
+            // Program 1
+            if(input === 'code1') {
+                programBox.innerHTML = `=== PROGRAM 1 ===
+                
+// Calculator Program
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if(b !== 0) {
+        return a / b;
+    }
+    return "Cannot divide by zero";
+}
+
+// Example usage
+console.log(add(5, 3));      // 8
+console.log(subtract(10, 4)); // 6
+console.log(multiply(6, 7));  // 42
+console.log(divide(15, 3));   // 5`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 2
+            else if(input === 'code2') {
+                programBox.innerHTML = `=== PROGRAM 2 ===
+                
+// Even or Odd Checker
+function checkEvenOdd(number) {
+    if(number % 2 === 0) {
+        return number + " is Even";
+    } else {
+        return number + " is Odd";
+    }
+}
+
+// Find Maximum in Array
+function findMax(arr) {
+    let max = arr[0];
+    for(let i = 1; i < arr.length; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+// Example usage
+console.log(checkEvenOdd(7));     // 7 is Odd
+console.log(checkEvenOdd(10));    // 10 is Even
+console.log(findMax([3, 7, 2, 9, 5])); // 9`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 3
+            else if(input === 'code3') {
+                programBox.innerHTML = `=== PROGRAM 3 ===
+                
+// Factorial Calculator
+function factorial(n) {
+    if(n === 0 || n === 1) {
+        return 1;
+    }
+    let result = 1;
+    for(let i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Fibonacci Series
+function fibonacci(n) {
+    let fib = [0, 1];
+    for(let i = 2; i < n; i++) {
+        fib[i] = fib[i-1] + fib[i-2];
+    }
+    return fib;
+}
+
+// Example usage
+console.log(factorial(5));  // 120
+console.log(fibonacci(8));  // [0, 1, 1, 2, 3, 5, 8, 13]`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 4
+            else if(input === 'code4') {
+                programBox.innerHTML = `=== PROGRAM 4 ===
+                
+// Palindrome Checker
+function isPalindrome(str) {
+    str = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+    let reversed = str.split('').reverse().join('');
+    return str === reversed;
+}
+
+// Reverse String
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
+// Count Vowels
+function countVowels(str) {
+    let vowels = str.match(/[aeiou]/gi);
+    return vowels ? vowels.length : 0;
+}
+
+// Example usage
+console.log(isPalindrome("racecar"));  // true
+console.log(reverseString("hello"));   // "olleh"
+console.log(countVowels("beautiful")); // 5`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 5
+            else if(input === 'code5') {
+                programBox.innerHTML = `=== PROGRAM 5 ===
+                
+// Student Grade Calculator
+function calculateGrade(marks) {
+    let total = 0;
+    for(let mark of marks) {
+        total += mark;
+    }
+    let average = total / marks.length;
+    
+    if(average >= 90) return "A";
+    else if(average >= 80) return "B";
+    else if(average >= 70) return "C";
+    else if(average >= 60) return "D";
+    else return "F";
+}
+
+// Example usage
+let studentMarks = [85, 92, 78, 95, 88];
+console.log("Average: " + (studentMarks.reduce((a,b) => a+b, 0)/studentMarks.length));
+console.log("Grade: " + calculateGrade(studentMarks));`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 6
+            else if(input === 'code6') {
+                programBox.innerHTML = `=== PROGRAM 6 ===
+                
+// Prime Number Checker
+function isPrime(num) {
+    if(num <= 1) return false;
+    if(num <= 3) return true;
+    if(num % 2 === 0 || num % 3 === 0) return false;
+    
+    for(let i = 5; i * i <= num; i += 6) {
+        if(num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+}
+
+// Find Prime Numbers in Range
+function findPrimes(start, end) {
+    let primes = [];
+    for(let i = start; i <= end; i++) {
+        if(isPrime(i)) {
+            primes.push(i);
+        }
+    }
+    return primes;
+}
+
+// Example usage
+console.log(isPrime(17));  // true
+console.log(findPrimes(10, 50)); // Primes between 10 and 50`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 7
+            else if(input === 'code7') {
+                programBox.innerHTML = `=== PROGRAM 7 ===
+                
+// Temperature Converter
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+// Simple Interest Calculator
+function simpleInterest(principal, rate, time) {
+    return (principal * rate * time) / 100;
+}
+
+// Example usage
+console.log(celsiusToFahrenheit(25));  // 77°F
+console.log(fahrenheitToCelsius(77));  // 25°C
+console.log(simpleInterest(1000, 5, 2)); // 100`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 8
+            else if(input === 'code8') {
+                programBox.innerHTML = `=== PROGRAM 8 ===
+                
+// Array Sorting
+function bubbleSort(arr) {
+    let sorted = [...arr];
+    for(let i = 0; i < sorted.length - 1; i++) {
+        for(let j = 0; j < sorted.length - i - 1; j++) {
+            if(sorted[j] > sorted[j+1]) {
+                [sorted[j], sorted[j+1]] = [sorted[j+1], sorted[j]];
+            }
+        }
+    }
+    return sorted;
+}
+
+// Find Duplicates
+function findDuplicates(arr) {
+    let duplicates = [];
+    let seen = {};
+    
+    for(let item of arr) {
+        if(seen[item]) {
+            if(!duplicates.includes(item)) {
+                duplicates.push(item);
+            }
+        } else {
+            seen[item] = 1;
+        }
+    }
+    return duplicates;
+}
+
+// Example usage
+console.log(bubbleSort([64, 34, 25, 12, 22, 11, 90]));
+console.log(findDuplicates([1,2,3,2,4,5,3,6])); // [2,3]`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 9
+            else if(input === 'code9') {
+                programBox.innerHTML = `=== PROGRAM 9 ===
+                
+// Multiplication Table
+function multiplicationTable(num, limit = 10) {
+    let table = [];
+    for(let i = 1; i <= limit; i++) {
+        table.push(num + " × " + i + " = " + (num * i));
+    }
+    return table;
+}
+
+// Power Calculator
+function power(base, exponent) {
+    let result = 1;
+    for(let i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
+}
+
+// Example usage
+console.log(multiplicationTable(7));
+console.log(power(2, 5)); // 32`;
+                programBox.style.display = 'block';
+            }
+            
+            // Program 10
+            else if(input === 'code10') {
+                programBox.innerHTML = `=== PROGRAM 10 ===
+                
+// Rock Paper Scissors Game
+function playGame(playerChoice) {
+    const choices = ['rock', 'paper', 'scissors'];
+    const computer = choices[Math.floor(Math.random() * 3)];
+    
+    if(playerChoice === computer) {
+        return "It's a tie!";
+    }
+    
+    if(
+        (playerChoice === 'rock' && computer === 'scissors') ||
+        (playerChoice === 'paper' && computer === 'rock') ||
+        (playerChoice === 'scissors' && computer === 'paper')
+    ) {
+        return "You win! " + playerChoice + " beats " + computer;
+    }
+    
+    return "Computer wins! " + computer + " beats " + playerChoice;
+}
+
+// Example usage
+console.log(playGame('rock'));`;
+                programBox.style.display = 'block';
+            }
+            
+            // Wrong input
+            else {
+                programBox.innerHTML = '<x> Please type code1 to code10 only!';
+                programBox.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
